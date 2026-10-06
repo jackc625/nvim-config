@@ -735,6 +735,7 @@ do
   ---@type table<string, vim.lsp.Config>
   local servers = {
     ts_ls = {},
+    biome = {},
     -- clangd = {},
     -- gopls = {},
     -- pyright = {},
@@ -828,11 +829,15 @@ do
     format_on_save = function(bufnr)
       -- You can specify filetypes to autoformat on save here:
       local enabled_filetypes = {
+        typescript = true,
+        typescriptreact = true,
+        javascript = true,
+        javascriptreact = true,
         -- lua = true,
         -- python = true,
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
-        return { timeout_ms = 500 }
+        return { timeout_ms = 500, lsp_format = 'never' }
       else
         return nil
       end
@@ -841,7 +846,12 @@ do
       lsp_format = 'fallback', -- Use external formatters if configured below, otherwise use LSP formatting. Set to `false` to disable LSP formatting entirely.
     },
     -- You can also specify external formatters in here.
+    formatters = { biome = { require_cwd = true } },
     formatters_by_ft = {
+      typescript = { 'biome' },
+      typescriptreact = { 'biome' },
+      javascript = { 'biome' },
+      javascriptreact = { 'biome' },
       -- rust = { 'rustfmt' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
