@@ -736,6 +736,9 @@ do
   local servers = {
     ts_ls = {},
     biome = {},
+    gopls = {},
+    pyright = {},
+    ruff = {},
     -- clangd = {},
     -- gopls = {},
     -- pyright = {},
@@ -829,6 +832,8 @@ do
     format_on_save = function(bufnr)
       -- You can specify filetypes to autoformat on save here:
       local enabled_filetypes = {
+        python = true,
+        go = true,
         typescript = true,
         typescriptreact = true,
         javascript = true,
@@ -846,8 +851,10 @@ do
       lsp_format = 'fallback', -- Use external formatters if configured below, otherwise use LSP formatting. Set to `false` to disable LSP formatting entirely.
     },
     -- You can also specify external formatters in here.
-    formatters = { biome = { require_cwd = true } },
+    formatters = { biome = { require_cwd = true }, ruff_format = { require_cwd = true } },
     formatters_by_ft = {
+      python = { 'ruff_format' },
+      go = { 'gofmt' },
       typescript = { 'biome' },
       typescriptreact = { 'biome' },
       javascript = { 'biome' },
