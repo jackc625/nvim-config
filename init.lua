@@ -734,6 +734,7 @@ do
   --  See `:help lsp-config` for information about keys and how to configure
   ---@type table<string, vim.lsp.Config>
   local servers = {
+    ts_ls = {},
     -- clangd = {},
     -- gopls = {},
     -- pyright = {},
