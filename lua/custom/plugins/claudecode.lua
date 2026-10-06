@@ -5,6 +5,7 @@ require('claudecode').setup {
 }
 
 vim.keymap.set('n', '<leader>ac', '<cmd>ClaudeCode<cr>', { desc = 'Toggle Claude' })
+vim.keymap.set('n', '<leader>ay', '<cmd>ClaudeCode --dangerously-skip-permissions<cr>', { desc = 'Claude (skip permissions)' })
 vim.keymap.set('n', '<leader>af', '<cmd>ClaudeCodeFocus<cr>', { desc = 'Focus Claude' })
 vim.keymap.set('n', '<leader>ab', '<cmd>ClaudeCodeAdd %<cr>', { desc = 'Add current file to Claude' })
 vim.keymap.set('v', '<leader>as', '<cmd>ClaudeCodeSend<cr>', { desc = 'Send selection to Claude' })
